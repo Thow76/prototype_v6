@@ -10,7 +10,7 @@ class AppTheme {
         fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
     bodyText1: TextStyle(
         fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.white),
-    bodyText2: TextStyle(fontSize: 14.0, color: Colors.white),
+    bodyText2: TextStyle(fontSize: 16.0, color: Colors.white),
     caption: TextStyle(
       fontSize: 18.0,
       color: Colors.white,

@@ -1,8 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prototype_v5/firebase_options.dart';
-import 'package:prototype_v5/screens/login_screen.dart';
-import 'package:prototype_v5/screens/utils/app_theme.dart';
+import 'package:prototype_v5/screens/main_screen.dart';
+import 'package:prototype_v5/services/authentication/widgets/sign_in_sign_up_form_widget.dart';
+import 'package:prototype_v5/utils/app_theme.dart';
+import 'package:provider/provider.dart';
+import 'package:prototype_v5/services/authentication/auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,10 +23,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme().light();
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: theme,
-      home: const LoginScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AuthService>(
+          lazy: false,
+          create: (_) => AuthService(),
+        ),
+      ],
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: theme,
+          home: const MainScreen()),
     );
   }
 }
