@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prototype_v5/firebase_options.dart';
+import 'package:prototype_v5/models/learners/learner.dart';
+import 'package:prototype_v5/screens/learner/learner_home_screen.dart';
 import 'package:prototype_v5/screens/main_screen.dart';
-import 'package:prototype_v5/services/authentication/widgets/sign_in_sign_up_form_widget.dart';
 import 'package:prototype_v5/utils/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:prototype_v5/services/authentication/auth.dart';
@@ -29,11 +30,19 @@ class MyApp extends StatelessWidget {
           lazy: false,
           create: (_) => AuthService(),
         ),
+        ChangeNotifierProvider<UserId>(lazy: false, create: (_) => UserId()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: theme,
-          home: const MainScreen()),
+          home: Consumer<AuthService>(builder: (context, auth, child) {
+            if (auth.isLoggedIn()) {
+              return const LearnerHome();
+            } else {
+              return const MainScreen();
+            }
+          }),
+          routes: {LearnerHome.routeName: (ctx) => const LearnerHome()}),
     );
   }
 }

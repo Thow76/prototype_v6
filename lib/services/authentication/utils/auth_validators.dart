@@ -3,11 +3,11 @@ class AuthValidators {
   // #1
   static const String emailError = "Please provide a valid email.";
   static const String passwordError =
-      "Password must be at least 8 charaters long with 1 uppercase letter, and a number.";
+      "Password must be at least 8 characters long with 1 uppercase letter, and a number.";
   static const String confirmPasswordError = "Passwords do not match.";
 
   RegExp regExEmail =
-      RegExp(r'/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/');
+      RegExp(r'^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$');
   //A function that validate user entered password
   String? validateEmail(String? email) {
     String validEmail = email as String;
@@ -16,7 +16,8 @@ class AuthValidators {
   }
 
 // RegEx pattern that confirms the email conforms to a standard email structure
-  RegExp regExPassword = RegExp(r'/^[\d\w@-]{8,20}$/i,');
+  RegExp regExPassword =
+      RegExp(r'^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,})$');
 
 // A function to validate user entered password
   String? validatePassword(String? pass) {
@@ -26,16 +27,18 @@ class AuthValidators {
   }
 
 // RegEx pattern that requires a password has at least 8 characters, 1 uppercare character and 1 number
-  RegExp regExConfirmPassword = RegExp(r'/^[\d\w@-]{8,20}$/i,');
 
-// A function t0 validate user entered password
+// A function to validate user entered password
   String? confirmPassword(String? val, firstPass) {
     final String firstPassword = firstPass as String;
     final String secondPassword = val as String;
 
-    String confirmPassword = val;
-    if (!regExConfirmPassword.hasMatch(confirmPassword) ||
-        firstPassword != secondPassword) return confirmPasswordError;
+    if (firstPassword.isEmpty ||
+        secondPassword.isEmpty ||
+        firstPassword.length != secondPassword.length) {
+      return confirmPasswordError;
+    }
+    if (firstPassword != secondPassword) return confirmPasswordError;
     return null;
   }
 }

@@ -47,9 +47,9 @@ class AppTheme {
         }),
       ),
       appBarTheme: const AppBarTheme(
-        foregroundColor: Colors.white,
-        backgroundColor: Color.fromARGB(255, 57, 50, 91),
-      ),
+          foregroundColor: Colors.white,
+          backgroundColor: Color.fromARGB(255, 57, 50, 91),
+          titleTextStyle: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           fixedSize: const Size(300, 50),

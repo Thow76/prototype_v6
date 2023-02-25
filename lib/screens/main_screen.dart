@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:prototype_v5/models/learners/learner.dart';
 import 'package:prototype_v5/services/authentication/widgets/sign_in_sign_up_form_widget.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -16,7 +18,7 @@ class MainScreen extends StatelessWidget {
             onPointerDown: (PointerDownEvent event) =>
                 FocusManager.instance.primaryFocus?.unfocus(),
             //===========//
-            child: const SignInUpForm()),
+            child: SignInUpForm()),
       ),
     );
   }

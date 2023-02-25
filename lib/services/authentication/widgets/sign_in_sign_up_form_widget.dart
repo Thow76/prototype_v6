@@ -69,41 +69,6 @@ class _SignInUpFormState extends State<SignInUpForm> {
     });
   }
 
-  // RegExp regExEmail =
-  //     RegExp(r'/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/');
-  // //A function that validate user entered password
-  // bool validateEmail(String email) {
-  //   String validEmail = email.trim();
-  //   if (regExEmail.hasMatch(validEmail)) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  // RegExp regExPassword = RegExp(r'/^[\d\w@-]{8,20}$/i,');
-  // //A function that validate user entered password
-  // bool validatePassword(String pass) {
-  //   String password = pass.trim();
-  //   if (regExPassword.hasMatch(password)) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  // RegExp regExConfirmPassword = RegExp(r'/^[\d\w@-]{8,20}$/i,');
-  // //A function that validate user entered password
-  // bool confirmPassword(String pass) {
-  //   String confirmPassword = pass.trim();
-  //   if (regExConfirmPassword.hasMatch(confirmPassword) &&
-  //       _passwordController == _confirmPasswordController) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
   // Submit form will take AuthStateProvider, and BuildContext
 // #1
   void _submitForm(AuthService authService, BuildContext context) async {
@@ -261,7 +226,7 @@ class _SignInUpFormState extends State<SignInUpForm> {
                         textInputAction: TextInputAction.done,
                         toggleObscureText: toggleHidePassword,
                         validator: (val) => authValidators.confirmPassword(
-                            val, _confirmPasswordController.text),
+                            val, _passwordController.text),
                         // (String? value) {
                         //   // conmfirm user has enetered a password
                         //   if (value == null || value.isEmpty) {

@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 
 class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -45,6 +44,7 @@ class AuthService extends ChangeNotifier {
   void login(String email, String password, BuildContext context) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
+      //Navigator.of(context).pushNamed(LearnerHome.routeName);
       notifyListeners();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-email') {
