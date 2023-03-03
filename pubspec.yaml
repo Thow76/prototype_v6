@@ -40,6 +40,9 @@ dependencies:
   cloud_firestore:
   firebase_auth:
   provider: '6.0.4'
+  datetime_picker_formfield: ^2.0.0
+  date_format: ^2.0.7
+  http:
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:prototype_v5/screens/learner/widgets/learner_home_details.dart';
+import 'package:prototype_v5/screens/learner/widgets/learner_home_layout%20copy.dart';
 import 'package:prototype_v5/screens/learner/widgets/learner_home_layout.dart';
 
 class LearnerHome extends StatelessWidget {
@@ -10,8 +12,8 @@ class LearnerHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: LearnerHomeLayout(),
+    return Scaffold(
+      body: LearnerHomeLayoutCopy(),
     );
   }
 }

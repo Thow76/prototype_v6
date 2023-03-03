@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prototype_v5/firebase_options.dart';
 import 'package:prototype_v5/models/learners/learner.dart';
+import 'package:prototype_v5/screens/learner/learner_edit_profile_screen.dart';
 import 'package:prototype_v5/screens/learner/learner_home_screen.dart';
 import 'package:prototype_v5/screens/main_screen.dart';
 import 'package:prototype_v5/utils/app_theme.dart';
@@ -42,7 +43,10 @@ class MyApp extends StatelessWidget {
               return const MainScreen();
             }
           }),
-          routes: {LearnerHome.routeName: (ctx) => const LearnerHome()}),
+          routes: {
+            LearnerHome.routeName: (ctx) => const LearnerHome(),
+            RegistrationScreen.routeName: (ctx) => RegistrationScreen(),
+          }),
     );
   }
 }

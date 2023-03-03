@@ -3,23 +3,50 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:prototype_v5/models/learners/learner.dart';
+import 'package:prototype_v5/services/authentication/auth.dart';
+import 'package:provider/provider.dart';
 
 class DatabaseService with ChangeNotifier {
   final String? uid;
-
+  final _user = AuthService();
   DatabaseService({required this.uid});
 
-//Initialise learner data collection
+//Helper
+
+// Initialise learner data collection
   final CollectionReference learnerCollection =
       FirebaseFirestore.instance.collection('learners');
 
 // Create initial Firebase collection entry
-  Future signUpUserData(String email,
-      {String role = 'user', String status = 'signed up'}) async {
+  Future signUpUserData({
+    String role = 'user',
+    String status = 'Signed Up',
+    String? firstName = 'Please Register',
+    String? surname = '',
+    String? streetNumber = 'Please Register',
+    String? flat = '',
+    String? streetName = '',
+    String? postcode = 'Please Register',
+    String? email = 'Please Register',
+    String? phoneNumber = 'Please Register',
+    String? nationality = 'Please Register',
+    String? nativeLanguage = 'Please Register',
+    DateTime? dateOfBirth,
+  }) async {
     return await learnerCollection.doc(uid).set({
-      'email': email,
+      'first name': firstName,
+      'surname': surname,
+      'street number': streetNumber,
+      'flat': flat,
+      'street name': streetName,
+      'postcode': postcode,
+      'email': _user.email(),
+      'phone number': phoneNumber,
+      'nationality': nationality,
+      'native language': nativeLanguage,
+      'date of birth': dateOfBirth,
       'role': role,
-      'status': status,
+      'learner status': status,
     });
   }
 
@@ -35,9 +62,9 @@ class DatabaseService with ChangeNotifier {
       String phoneNumber,
       String nationality,
       String nativeLanguage,
-      String dateOfBirth,
+      DateTime dateOfBirth,
       {String status = 'registered'}) async {
-    return await learnerCollection.doc(uid).set({
+    return await learnerCollection.doc(uid).update({
       'first name': firstName,
       'surname': surname,
       'street number': streetNumber,

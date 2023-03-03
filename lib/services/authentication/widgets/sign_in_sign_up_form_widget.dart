@@ -123,7 +123,7 @@ class _SignInUpFormState extends State<SignInUpForm> {
               children: <Widget>[
                 const SizedBox(height: 30),
                 SizedBox(
-                  width: 300,
+                  width: 350,
                   child: DynamicInputWidget(
                       // decoration:
                       //     textInputDecorationLight.copyWith(hintText: 'email'),
@@ -162,7 +162,7 @@ class _SignInUpFormState extends State<SignInUpForm> {
                   height: 10,
                 ),
                 SizedBox(
-                  width: 300,
+                  width: 350,
                   child: DynamicInputWidget(
                     // decoration: textInputDecorationLight.copyWith(
                     //     hintText: 'password'),
@@ -212,7 +212,7 @@ class _SignInUpFormState extends State<SignInUpForm> {
                     opacity: toggleScreen ? 1 : 0,
                     child: SizedBox(
                       height: 30,
-                      width: 300,
+                      width: 350,
                       child: DynamicInputWidget(
                         controller: _confirmPasswordController,
                         focusNode: confirmPasswordFocusNode,

@@ -6,7 +6,7 @@ import 'package:prototype_v5/models/learners/learner.dart';
 
 // Implements the changenotifier class accross the app
 class Learners with ChangeNotifier {
-  List<LearnerView> _details = [];
+  List<Learner> _details = [];
 
   // var _selectedOnly = false;
 
@@ -20,7 +20,7 @@ class Learners with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  List<LearnerView> get details {
+  List<Learner> get details {
     // if (_selectedOnly) {
     //   return _details.where((learners) => learners.isSelected).toList();
     // }
